@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, SafeAreaView, Image } from "react-native";
+import { View, Image } from "react-native";
 import Header from "../compFiles/header";
 import ListComp from "../compFiles/listComp";
 import MapView, { Marker } from "react-native-maps";
@@ -10,9 +10,7 @@ import {
 } from "react-native-responsive-screen";
 import COLORS from "../styleFiles/colors";
 import MapViewDirections from "react-native-maps-directions";
-
-const GOOGLE_MAPS_APIKEY =
-  "------------------put api key here --------------------";
+import API from "../globalFiles/api";
 
 const MapViewScreen = (props) => {
   const [region, setRegion] = useState({
@@ -25,7 +23,7 @@ const MapViewScreen = (props) => {
   useEffect(() => {}, []);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <Header
         navigation={props.navigation}
         headerTitle="Map View"
@@ -65,23 +63,25 @@ const MapViewScreen = (props) => {
             />
           </Marker>
 
-          <MapViewDirections
-            origin={{
-              latitude: 18.579,
-              longitude: 73.786,
-            }}
-            destination={{
-              latitude: props.route.params.latProps,
-              longitude: props.route.params.longProps,
-            }}
-            apikey={GOOGLE_MAPS_APIKEY}
-            strokeWidth={5}
-            strokeColor={COLORS.primaryColor}
-            optimizeWaypoints={true}
-          />
+          {API.GOOGLE_MAPS_APIKEY == "" ? null : (
+            <MapViewDirections
+              origin={{
+                latitude: 18.579,
+                longitude: 73.786,
+              }}
+              destination={{
+                latitude: props.route.params.latProps,
+                longitude: props.route.params.longProps,
+              }}
+              apikey={API.GOOGLE_MAPS_APIKEY}
+              strokeWidth={5}
+              strokeColor={COLORS.primaryColor}
+              optimizeWaypoints={true}
+            />
+          )}
         </MapView>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

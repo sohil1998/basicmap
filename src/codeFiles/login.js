@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, SafeAreaView, TextInput, TouchableOpacity } from "react-native";
+import { Text, TextInput, TouchableOpacity } from "react-native";
 import globalStyle from "../styleFiles/globalStyle";
 
 const Login = (props) => {
@@ -14,7 +14,7 @@ const Login = (props) => {
     }
   };
   return (
-    <SafeAreaView style={[globalStyle.screenStyle, globalStyle.centerStyle]}>
+    <View style={[globalStyle.screenStyle, globalStyle.centerStyle]}>
       <TextInput
         style={[
           globalStyle.textInputStyle,
@@ -54,7 +54,7 @@ const Login = (props) => {
       >
         <Text style={[globalStyle.textStyleMid]}>LOGIN</Text>
       </TouchableOpacity>
-    </SafeAreaView>
+    </View>
   );
 };
 

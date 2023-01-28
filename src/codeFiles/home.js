@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, SafeAreaView, FlatList, RefreshControl } from "react-native";
+import { View, FlatList, RefreshControl } from "react-native";
 import Header from "../compFiles/header";
 import ListComp from "../compFiles/listComp";
 import API from "../globalFiles/api";
@@ -36,7 +36,7 @@ const Home = (props) => {
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <Header
         navigation={props.navigation}
         headerTitle="Restaurant List"
@@ -69,6 +69,8 @@ const Home = (props) => {
                 <ListComp
                   showRightImage
                   onListPress={() => {
+                    alert("please put google map api key in api file if not");
+
                     props.navigation.navigate("map", {
                       latProps: Number(item.item.latitude),
                       longProps: Number(item.item.longitude),
@@ -86,7 +88,7 @@ const Home = (props) => {
           }}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
