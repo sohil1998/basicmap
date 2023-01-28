@@ -65,19 +65,21 @@ const Home = (props) => {
           }
           renderItem={(item, index) => {
             return (
-              <View>
+              <View key={index + "jsjs8"}>
                 <ListComp
                   showRightImage
                   onListPress={() => {
-                    alert("please put google map api key in api file if not");
-
-                    props.navigation.navigate("map", {
-                      latProps: Number(item.item.latitude),
-                      longProps: Number(item.item.longitude),
-                      title: item.item.title,
-                      rating: item.item.rating,
-                      imageUrl: item.item.images[0].url,
-                    });
+                    if (API.GOOGLE_MAPS_APIKEY == "") {
+                      alert("please put google map api key in api file if not");
+                    } else {
+                      props.navigation.navigate("map", {
+                        latProps: Number(item.item.latitude),
+                        longProps: Number(item.item.longitude),
+                        title: item.item.title,
+                        rating: item.item.rating,
+                        imageUrl: item.item.images[0].url,
+                      });
+                    }
                   }}
                   listHeader={item.item.title}
                   imageUrl={item.item.images[0].url}

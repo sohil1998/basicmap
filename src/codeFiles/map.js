@@ -63,22 +63,20 @@ const MapViewScreen = (props) => {
             />
           </Marker>
 
-          {API.GOOGLE_MAPS_APIKEY == "" ? null : (
-            <MapViewDirections
-              origin={{
-                latitude: 18.579,
-                longitude: 73.786,
-              }}
-              destination={{
-                latitude: props.route.params.latProps,
-                longitude: props.route.params.longProps,
-              }}
-              apikey={API.GOOGLE_MAPS_APIKEY}
-              strokeWidth={5}
-              strokeColor={COLORS.primaryColor}
-              optimizeWaypoints={true}
-            />
-          )}
+          <MapViewDirections
+            origin={{
+              latitude: 18.579,
+              longitude: 73.786,
+            }}
+            destination={{
+              latitude: props.route.params.latProps,
+              longitude: props.route.params.longProps,
+            }}
+            apikey={API.GOOGLE_MAPS_APIKEY}
+            strokeWidth={5}
+            strokeColor={COLORS.primaryColor}
+            optimizeWaypoints={true}
+          />
         </MapView>
       </View>
     </View>
